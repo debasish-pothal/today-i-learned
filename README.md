@@ -1,3 +1,7 @@
+# App deployed in Netlify for preview
+
+This app is deployed in netlify [App Link](https://dpothal-app-today-i-learned.netlify.app/).
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
