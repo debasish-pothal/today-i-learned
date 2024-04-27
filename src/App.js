@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import Header from "./components/Header";
+import FactForm from "./components/FactForm";
+import CategoryFilter from "./components/CategoryFilter";
+import FactList from "./components/FactList";
 
-function App() {
+import { useSelector, useDispatch } from "react-redux";
+import { showForm } from "./reducers/factFormSlice";
+import { fetchFacts } from "./reducers/factsSlice";
+
+import { useEffect } from "react";
+
+const App = () => {
+  const isFormVisible = useSelector(showForm);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchFacts());
+  }, [dispatch]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <Header />
+      {isFormVisible && <FactForm />}
+
+      <main className="main">
+        <CategoryFilter />
+        <FactList />
+      </main>
     </div>
   );
-}
+};
 
 export default App;
